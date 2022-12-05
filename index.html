@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <script src="index.js" defer></script>
+    <title>Document</title>
+</head>
+<body>
+    <div class="tet__container">
+        <img src="./images/background.jpg" alt="">
+        <div class="tet__content">
+            <h3>Waiting for Tết ~~</h3>
+
+            <div class="timer">
+                <div class="day time" id="day"></div>
+                <div class="time time-divide">:</div>
+                <div class="hour time" id="hour"></div>
+                <div class="time time-divide">:</div>
+                <div class="minute time" id="minute"></div>
+                <div class="time time-divide">:</div>
+                <div class="second time" id="second"></div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Set the date we're counting down to
+        var countDownDate = new Date("Jan 21, 2023 00:00:00").getTime();
+        
+        // Update the count down every 1 second
+        var x = setInterval(function() {
+        
+          // Get today's date and time
+          var now = new Date().getTime();
+            
+          // Find the distance between now and the count down date
+          var distance = countDownDate - now;
+            
+          // Time calculations for days, hours, minutes and seconds
+          var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+          var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+          var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+          var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+            
+          // Output the result in an element with id="demo"
+
+          if(days < 10){
+            days = "0" + days
+          };
+
+          if(minutes < 10){
+            minutes = "0" + minutes
+          };
+
+          if(hours < 10){
+            hours = "0" + hours
+          };
+
+          if(seconds < 10){
+            seconds = "0" + seconds
+          };
+
+          const dayText = document.getElementById("day");
+          const hourText = document.getElementById("hour");
+          const minuteText = document.getElementById("minute");
+          const secondText = document.getElementById("second");
+          const divide = document.getElementsByClassName("time-divide")
+
+          dayText.innerHTML = days;
+          hourText.innerHTML = hours;
+          minuteText.innerHTML = minutes;
+          secondText.innerHTML = seconds;
+            
+          // If the count down is over, write some text 
+          if (distance < 0) {
+            dayText.innerHTML = "CHÚC";
+            hourText.innerHTML = "MỪNG";
+            minuteText.innerHTML = "NĂM";
+            secondText.innerHTML = "MỚI";
+          }
+        }, 1000);
+        </script>        
+</body>
+</html>
